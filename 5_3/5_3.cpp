@@ -43,7 +43,7 @@ struct tiny_iterator
 	typedef random_access_iterator_tag category;
 };
 
-template <class _tiny, int _index>
+template <class _tiny, int _pos>
 struct tiny_at;
 
 template <class _tiny>
@@ -143,10 +143,10 @@ namespace boost
 		{
 		};
 
-		template <class _tiny, class _pos, class _index>
-		struct advance<tiny_iterator<_tiny, _pos>, _index>
+		template <class _tiny, class _pos, class _offset>
+		struct advance<tiny_iterator<_tiny, _pos>, _offset>
 		{
-			typedef tiny_iterator<_tiny, typename plus<_pos, _index>::type> type;
+			typedef tiny_iterator<_tiny, typename plus<_pos, _offset>::type> type;
 		};
 
 		template <class _tiny, class _pos1, class _pos2>
