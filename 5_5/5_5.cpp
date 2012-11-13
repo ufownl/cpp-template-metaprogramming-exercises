@@ -22,7 +22,7 @@
 using namespace boost;
 using namespace boost::mpl;
 
-struct none
+struct nil
 {
 };
 
@@ -30,7 +30,7 @@ struct tiny_tag
 {
 };
 
-template <class T0 = none, class T1 = none, class T2 = none>
+template <class T0 = nil, class T1 = nil, class T2 = nil>
 struct tiny
 {
 	typedef tiny_tag tag;
@@ -73,17 +73,17 @@ struct tiny_size : int_<3>
 };
 
 template <class T0, class T1>
-struct tiny_size<T0, T1, none> : int_<2>
+struct tiny_size<T0, T1, nil> : int_<2>
 {
 };
 
 template <class T0>
-struct tiny_size<T0, none, none> : int_<1>
+struct tiny_size<T0, nil, nil> : int_<1>
 {
 };
 
 template <>
-struct tiny_size<none, none, none> : int_<0>
+struct tiny_size<nil, nil, nil> : int_<0>
 {
 };
 
@@ -91,12 +91,12 @@ template <class _tiny, class T, int _size>
 struct tiny_push_back;
 
 template <class _tiny, class T>
-struct tiny_push_back<_tiny, T, 0> : tiny<T, none, none>
+struct tiny_push_back<_tiny, T, 0> : tiny<T, nil, nil>
 {
 };
 
 template <class _tiny, class T>
-struct tiny_push_back<_tiny, T, 1> : tiny<typename _tiny::t0, T, none>
+struct tiny_push_back<_tiny, T, 1> : tiny<typename _tiny::t0, T, nil>
 {
 };
 
@@ -116,26 +116,26 @@ struct tiny_copy<_seq, _it, _it> : _seq
 };
 
 template <class _tiny>
-struct tiny_pop_front : tiny<typename _tiny::t1, typename _tiny::t2, none>
+struct tiny_pop_front : tiny<typename _tiny::t1, typename _tiny::t2, nil>
 {
-	BOOST_STATIC_ASSERT((!is_same<typename _tiny::t0, none>::value));
+	BOOST_STATIC_ASSERT((!is_same<typename _tiny::t0, nil>::value));
 };
 
 template <class _tiny, int _size>
 struct tiny_pop_back;
 
 template <class _tiny>
-struct tiny_pop_back<_tiny, 3> : tiny<typename _tiny::t0, typename _tiny::t1, none>
+struct tiny_pop_back<_tiny, 3> : tiny<typename _tiny::t0, typename _tiny::t1, nil>
 {
 };
 
 template <class _tiny>
-struct tiny_pop_back<_tiny, 2> : tiny<typename _tiny::t0, none, none>
+struct tiny_pop_back<_tiny, 2> : tiny<typename _tiny::t0, nil, nil>
 {
 };
 
 template <class _tiny>
-struct tiny_pop_back<_tiny, 1> : tiny<none, none, none>
+struct tiny_pop_back<_tiny, 1> : tiny<nil, nil, nil>
 {
 };
 
@@ -225,7 +225,7 @@ namespace boost
 			template <class _tiny, class T>
 			struct apply : tiny<T, typename _tiny::t0, typename _tiny::t1>
 			{
-				BOOST_STATIC_ASSERT((is_same<typename _tiny::t2, none>::value));
+				BOOST_STATIC_ASSERT((is_same<typename _tiny::t2, nil>::value));
 			};
 		};
 
