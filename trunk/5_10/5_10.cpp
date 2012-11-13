@@ -14,7 +14,7 @@ struct tree
 {
 };
 
-struct none
+struct nil
 {
 };
 
@@ -33,7 +33,7 @@ struct root<tree<_root, _left_child, _right_child> >
 template <class _tree>
 struct left_child
 {
-	typedef none type;
+	typedef nil type;
 };
 
 template <class _root, class _left_child, class _right_child>
@@ -45,7 +45,7 @@ struct left_child<tree<_root, _left_child, _right_child> >
 template <class _tree>
 struct right_child
 {
-	typedef none type;
+	typedef nil type;
 };
 
 template <class _root, class _left_child, class _right_child>
@@ -76,12 +76,12 @@ struct preorder_view_impl
 };
 
 template <class _seq, class _root>
-struct preorder_view_impl<_seq, _root, none, none> : push_back<_seq, _root>
+struct preorder_view_impl<_seq, _root, nil, nil> : push_back<_seq, _root>
 {
 };
 
 template <class _seq>
-struct preorder_view_impl<_seq, none, none, none> : _seq
+struct preorder_view_impl<_seq, nil, nil, nil> : _seq
 {
 };
 
@@ -118,12 +118,12 @@ struct inorder_view_impl
 };
 
 template <class _seq, class _root>
-struct inorder_view_impl<_seq, _root, none, none> : push_back<_seq, _root>
+struct inorder_view_impl<_seq, _root, nil, nil> : push_back<_seq, _root>
 {
 };
 
 template <class _seq>
-struct inorder_view_impl<_seq, none, none, none> : _seq
+struct inorder_view_impl<_seq, nil, nil, nil> : _seq
 {
 };
 
@@ -160,12 +160,12 @@ struct postorder_view_impl
 };
 
 template <class _seq, class _root>
-struct postorder_view_impl<_seq, _root, none, none> : push_back<_seq, _root>
+struct postorder_view_impl<_seq, _root, nil, nil> : push_back<_seq, _root>
 {
 };
 
 template <class _seq>
-struct postorder_view_impl<_seq, none, none, none> : _seq
+struct postorder_view_impl<_seq, nil, nil, nil> : _seq
 {
 };
 
@@ -186,11 +186,11 @@ int main(int argc, char *argv[])
 	BOOST_STATIC_ASSERT((equal<preorder_view<tree_seq_0>::type, vector<double, void*, int, long, char> >::value));
 	BOOST_STATIC_ASSERT((equal<inorder_view<tree_seq_0>::type, vector<int, void*, long, double, char> >::value));
 	BOOST_STATIC_ASSERT((equal<postorder_view<tree_seq_0>::type, vector<int, long, void*, char, double> >::value));
-	typedef tree<double, tree<void*, int, none>, char> tree_seq_1;
+	typedef tree<double, tree<void*, int, nil>, char> tree_seq_1;
 	BOOST_STATIC_ASSERT((equal<preorder_view<tree_seq_1>::type, vector<double, void*, int, char> >::value));
 	BOOST_STATIC_ASSERT((equal<inorder_view<tree_seq_1>::type, vector<int, void*, double, char> >::value));
 	BOOST_STATIC_ASSERT((equal<postorder_view<tree_seq_1>::type, vector<int, void*, char, double> >::value));
-	typedef tree<double, tree<void*, none, long>, char> tree_seq_2;
+	typedef tree<double, tree<void*, nil, long>, char> tree_seq_2;
 	BOOST_STATIC_ASSERT((equal<preorder_view<tree_seq_2>::type, vector<double, void*, long, char> >::value));
 	BOOST_STATIC_ASSERT((equal<inorder_view<tree_seq_2>::type, vector<void*, long, double, char> >::value));
 	BOOST_STATIC_ASSERT((equal<postorder_view<tree_seq_2>::type, vector<long, void*, char, double> >::value));

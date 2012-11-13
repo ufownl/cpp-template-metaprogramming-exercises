@@ -22,7 +22,7 @@ struct tree
 {
 };
 
-struct none
+struct nil
 {
 };
 
@@ -41,7 +41,7 @@ struct root<tree<_root, _left_child, _right_child> >
 template <class _tree>
 struct left_child
 {
-	typedef none type;
+	typedef nil type;
 };
 
 template <class _root, class _left_child, class _right_child>
@@ -53,7 +53,7 @@ struct left_child<tree<_root, _left_child, _right_child> >
 template <class _tree>
 struct right_child
 {
-	typedef none type;
+	typedef nil type;
 };
 
 template <class _root, class _left_child, class _right_child>
@@ -84,12 +84,12 @@ struct preorder_view_impl
 };
 
 template <class _seq, class _root>
-struct preorder_view_impl<_seq, _root, none, none> : push_back<_seq, _root>
+struct preorder_view_impl<_seq, _root, nil, nil> : push_back<_seq, _root>
 {
 };
 
 template <class _seq>
-struct preorder_view_impl<_seq, none, none, none> : _seq
+struct preorder_view_impl<_seq, nil, nil, nil> : _seq
 {
 };
 
@@ -126,12 +126,12 @@ struct inorder_view_impl
 };
 
 template <class _seq, class _root>
-struct inorder_view_impl<_seq, _root, none, none> : push_back<_seq, _root>
+struct inorder_view_impl<_seq, _root, nil, nil> : push_back<_seq, _root>
 {
 };
 
 template <class _seq>
-struct inorder_view_impl<_seq, none, none, none> : _seq
+struct inorder_view_impl<_seq, nil, nil, nil> : _seq
 {
 };
 
@@ -168,12 +168,12 @@ struct postorder_view_impl
 };
 
 template <class _seq, class _root>
-struct postorder_view_impl<_seq, _root, none, none> : push_back<_seq, _root>
+struct postorder_view_impl<_seq, _root, nil, nil> : push_back<_seq, _root>
 {
 };
 
 template <class _seq>
-struct postorder_view_impl<_seq, none, none, none> : _seq
+struct postorder_view_impl<_seq, nil, nil, nil> : _seq
 {
 };
 
@@ -211,7 +211,7 @@ struct binary_tree_insert
 };
 
 template <class T>
-struct binary_tree_insert<none, T> : T
+struct binary_tree_insert<nil, T> : T
 {
 };
 
@@ -235,13 +235,13 @@ struct binary_tree_search
 };
 
 template <class T>
-struct binary_tree_search<none, T> : bool_<false>
+struct binary_tree_search<nil, T> : bool_<false>
 {
 };
 
 int main(int argc, char *argv[])
 {
-	typedef mpl::copy<vector_c<int, 17, 25, 10, 2, 11>, binary_tree_inserter<none> >::type bst;
+	typedef mpl::copy<vector_c<int, 17, 25, 10, 2, 11>, binary_tree_inserter<nil> >::type bst;
 	BOOST_STATIC_ASSERT((binary_tree_search<bst, int_<11> >::type::value));
 	BOOST_STATIC_ASSERT((!binary_tree_search<bst, int_<20> >::type::value));
 	return 0;
