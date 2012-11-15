@@ -95,6 +95,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "9_4", "9_4\9_4.vcproj", "{F
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "9_5", "9_5\9_5.vcproj", "{EEA2F718-42A8-47CC-8F39-24DB46FA7BB4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "finite_state_machine", "finite_state_machine\finite_state_machine.vcproj", "{C119FAA8-95EE-453D-8AFF-5BB4F6375748}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -289,6 +291,10 @@ Global
 		{EEA2F718-42A8-47CC-8F39-24DB46FA7BB4}.Debug|Win32.Build.0 = Debug|Win32
 		{EEA2F718-42A8-47CC-8F39-24DB46FA7BB4}.Release|Win32.ActiveCfg = Release|Win32
 		{EEA2F718-42A8-47CC-8F39-24DB46FA7BB4}.Release|Win32.Build.0 = Release|Win32
+		{C119FAA8-95EE-453D-8AFF-5BB4F6375748}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C119FAA8-95EE-453D-8AFF-5BB4F6375748}.Debug|Win32.Build.0 = Debug|Win32
+		{C119FAA8-95EE-453D-8AFF-5BB4F6375748}.Release|Win32.ActiveCfg = Release|Win32
+		{C119FAA8-95EE-453D-8AFF-5BB4F6375748}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
