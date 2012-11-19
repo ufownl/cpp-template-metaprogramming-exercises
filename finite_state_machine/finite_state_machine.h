@@ -65,4 +65,15 @@ private:
 
 #include "event_dispatcher.h"
 
+#define TRANSITION_TABLE_BEGIN(T, seq)				\
+	private:										\
+		friend class finite_state_machine<T>;		\
+		struct transition_table						\
+			: seq<									\
+
+#define TRANSITION_TABLE_END						\
+			>										\
+		{											\
+		};											\
+
 #endif  // __FSM_finite_state_machine_H__
