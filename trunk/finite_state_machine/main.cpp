@@ -51,28 +51,23 @@ private:
 		initial_state = close_state
 	};
 
-	friend class finite_state_machine<player>;
-
-	struct transition_table
-		: boost::mpl::vector<
-			//    开始状态        事件            下一状态        动作
-			//  +---------------+---------------+---------------+-----------------------+
-			row < close_state	, open_close	, stop_state	, &player::open_player	>,
-			//  +---------------+---------------+---------------+-----------------------+
-			row < stop_state	, open_close	, close_state	, &player::close_player	>,
-			row < stop_state	, play			, playing_state	, &player::start_play	>,
-			//  +---------------+---------------+---------------+-----------------------+
-			row < playing_state	, open_close	, close_state	, &player::close_player >,
-			row < playing_state	, stop			, stop_state	, &player::stop_play	>,
-			row < playing_state	, pause			, pause_state	, &player::pause_play	>,
-			//  +---------------+---------------+---------------+-----------------------+
-			row < pause_state	, open_close	, close_state	, &player::close_player >,
-			row < pause_state	, stop			, stop_state	, &player::stop_play	>,
-			row < pause_state	, play			, playing_state	, &player::resume_play	>
-			//  +---------------+---------------+---------------+-----------------------+
-		>
-	{
-	};
+	TRANSITION_TABLE_BEGIN(player, boost::mpl::vector)
+		//    开始状态        事件            下一状态        动作
+		//  +---------------+---------------+---------------+-----------------------+
+		row < close_state	, open_close	, stop_state	, &player::open_player	>,
+		//  +---------------+---------------+---------------+-----------------------+
+		row < stop_state	, open_close	, close_state	, &player::close_player	>,
+		row < stop_state	, play			, playing_state	, &player::start_play	>,
+		//  +---------------+---------------+---------------+-----------------------+
+		row < playing_state	, open_close	, close_state	, &player::close_player >,
+		row < playing_state	, stop			, stop_state	, &player::stop_play	>,
+		row < playing_state	, pause			, pause_state	, &player::pause_play	>,
+		//  +---------------+---------------+---------------+-----------------------+
+		row < pause_state	, open_close	, close_state	, &player::close_player >,
+		row < pause_state	, stop			, stop_state	, &player::stop_play	>,
+		row < pause_state	, play			, playing_state	, &player::resume_play	>
+		//  +---------------+---------------+---------------+-----------------------+
+	TRANSITION_TABLE_END
 };
 
 int main(int argc, char *argv[])
