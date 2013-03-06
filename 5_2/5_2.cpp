@@ -207,6 +207,5 @@ int main(int argc, char *argv[])
 {
 	typedef tiny<int, float, long>::type tiny_test_0;
 	typedef push_front<tiny<float, long>, int>::type tiny_test_1;
-	//typedef push_front<tiny_test_0, int>::type tiny_test_2;
 	return 0;
 }

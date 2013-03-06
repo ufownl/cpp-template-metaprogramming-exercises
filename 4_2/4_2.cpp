@@ -24,13 +24,7 @@ struct logical_and<true_, true_, true_, true_, true_> : true_
 {
 };
 
-template <bool val>
-struct abort_
-{
-	BOOST_STATIC_ASSERT(false);
-	typedef abort_<val> type;
-	static const bool value = val;
-};
+struct nil;
 
 int main(int argc, char *argv[])
 {
@@ -44,20 +38,20 @@ int main(int argc, char *argv[])
 	BOOST_STATIC_ASSERT((!logical_and<true_, false_ >::value));
 	BOOST_STATIC_ASSERT((!logical_and<false_, false_ >::value));
 
-	BOOST_STATIC_ASSERT((logical_or<true_, abort_<true> >::value));
-	BOOST_STATIC_ASSERT((logical_or<true_, abort_<false> >::value));
-	BOOST_STATIC_ASSERT((!logical_and<false_, abort_<true> >::value));
-	BOOST_STATIC_ASSERT((!logical_and<false_, abort_<false> >::value));
+	BOOST_STATIC_ASSERT((logical_or<true_, nil>::value));
+	BOOST_STATIC_ASSERT((logical_or<true_, nil>::value));
+	BOOST_STATIC_ASSERT((!logical_and<false_, nil>::value));
+	BOOST_STATIC_ASSERT((!logical_and<false_, nil>::value));
 
 	BOOST_STATIC_ASSERT((!logical_or<false_, false_, false_, false_, false_>::value));
-	BOOST_STATIC_ASSERT((logical_or<false_, false_, true_, abort_<true>, abort_<false> >::value));
+	BOOST_STATIC_ASSERT((logical_or<false_, false_, true_, nil, nil>::value));
 	BOOST_STATIC_ASSERT((logical_and<true_, true_, true_, true_, true_>::value));
-	BOOST_STATIC_ASSERT((!logical_and<true_, false_, abort_<false>, abort_<true>, abort_<false> >::value));
+	BOOST_STATIC_ASSERT((!logical_and<true_, false_, nil, nil, nil>::value));
 
-	BOOST_STATIC_ASSERT((logical_or<true_, abort_<true>, abort_<false> >::value));
-	BOOST_STATIC_ASSERT((logical_or<true_, abort_<false>, abort_<true> >::value));
-	BOOST_STATIC_ASSERT((!logical_and<false_, abort_<true>, abort_<false> >::value));
-	BOOST_STATIC_ASSERT((!logical_and<false_, abort_<false>, abort_<true> >::value));
+	BOOST_STATIC_ASSERT((logical_or<true_, nil, nil>::value));
+	BOOST_STATIC_ASSERT((logical_or<true_, nil, nil>::value));
+	BOOST_STATIC_ASSERT((!logical_and<false_, nil, nil>::value));
+	BOOST_STATIC_ASSERT((!logical_and<false_, nil, nil>::value));
 
 	return 0;
 }

@@ -13,7 +13,7 @@ Target polymorphic_downcast(Source *ptr)
 template <class Target, class Source>
 Target polymorphic_downcast(Source &ref)
 {
-	assert(dynamic_cast<add_pointer<remove_reference<Target>::type>::type>(&ref) == &ref);
+	assert(dynamic_cast<typename add_pointer<typename remove_reference<Target>::type>::type>(&ref) == &ref);
 	return static_cast<Target>(ref);
 }
 

@@ -101,7 +101,7 @@ struct type_descriptor<T[N]>
 	{
 		char buf[16];
 
-		sprintf(buf, "%u", N);
+		sprintf(buf, "%lu", N);
 
 		ret = type_descriptor<T>();
 		ret += "[";

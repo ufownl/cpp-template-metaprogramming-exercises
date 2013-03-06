@@ -16,6 +16,6 @@ struct binary<0>
 
 int main(int argc, char *argv[])
 {
-	printf("%u\n", binary<101>::value);
+	printf("%lu\n", binary<101>::value);
 	return 0;
 }

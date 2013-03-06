@@ -155,7 +155,9 @@ struct compose_fg2
 	template <class T>
 	R operator () (const T &x)
 	{
-		return f(g(x));
+		F f_ = f;
+		G g_ = g;
+		return f_(g_(x));
 	}
 };
 
@@ -207,7 +209,7 @@ int main(int argc, char *argv[])
 	size_t cs = sizeof(compose<float>(f_obj, &g_func));
 	size_t ds = sizeof(compose<float>(f_obj, g_obj));
 
-	printf("%u %u %u %u\n", as, bs, cs, ds);
+	printf("%lu %lu %lu %lu\n", as, bs, cs, ds);
 
 	float e = compose<float>(h_obj, h_obj)(8.0f);
 

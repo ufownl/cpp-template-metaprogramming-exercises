@@ -16,7 +16,7 @@ struct twice : apply<F, typename apply<F, T>::type>
 
 int main(int argc, char *argv[])
 {
-	typedef apply<add_pointer<_1>, typename apply<add_pointer<_1>, typename apply<add_pointer<_1>, typename apply<add_pointer<_1>, int>::type>::type>::type>::type type;
+	typedef apply<add_pointer<_1>, apply<add_pointer<_1>, apply<add_pointer<_1>, apply<add_pointer<_1>, int>::type>::type>::type>::type type;
 	BOOST_STATIC_ASSERT((is_same<twice<add_pointer<_1>, twice<add_pointer<_1>, int>::type>::type, type>::value));
 	return 0;
 }
