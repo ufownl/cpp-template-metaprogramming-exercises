@@ -1,7 +1,6 @@
 #include <boost/type_traits.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/not.hpp>
-//#include <boost/mpl/bool.hpp>
 
 using namespace boost;
 using namespace boost::mpl;

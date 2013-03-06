@@ -52,17 +52,17 @@ struct type_descriptor
 	{
 		if (is_const<T>::value)
 		{
-			ret = type_descriptor<remove_const<T>::type>();
+			ret = type_descriptor<typename remove_const<T>::type>();
 			ret += " const";
 		}
 		else if (is_pointer<T>::value)
 		{
-			ret = type_descriptor<remove_pointer<T>::type>();
+			ret = type_descriptor<typename remove_pointer<T>::type>();
 			ret += "*";
 		}
 		else if (is_reference<T>::value)
 		{
-			ret = type_descriptor<remove_reference<T>::type>();
+			ret = type_descriptor<typename remove_reference<T>::type>();
 			ret += "&";
 		}
 		else

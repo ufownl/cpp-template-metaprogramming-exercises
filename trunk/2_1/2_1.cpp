@@ -8,13 +8,13 @@ struct replace_type;
 template <class C, class T1, class T2, bool _same>
 struct replace_type_impl
 {
-	typedef typename C type;
+	typedef C type;
 };
 
 template <class C, class T1, class T2>
 struct replace_type_impl<C, T1, T2, true>
 {
-	typedef typename T2 type;
+	typedef T2 type;
 };
 
 template <class C, class T1, class T2>

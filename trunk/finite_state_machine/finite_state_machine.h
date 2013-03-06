@@ -12,7 +12,7 @@ public:
 	template <class _event>
 	int process_event(const _event &e)
 	{
-		typedef typename generate_dispatcher<T::transition_table, _event>::type dispatcher;
+		typedef typename generate_dispatcher<typename T::transition_table, _event>::type dispatcher;
 
 		m_state = dispatcher::dispatch(*static_cast<T*>(this), m_state, e);
 		return m_state;

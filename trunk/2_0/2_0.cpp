@@ -5,13 +5,13 @@ using namespace boost;
 template <class T>
 struct add_const_ref
 {
-	typedef typename T const& type;
+	typedef T const& type;
 };
 
 template <class T>
 struct add_const_ref<T&>
 {
-	typedef typename T& type;
+	typedef T& type;
 };
 
 int main(int argc, char *argv[])
