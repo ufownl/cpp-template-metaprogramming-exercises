@@ -64,18 +64,18 @@ struct transition_less
 template <class _table, class _event>
 struct generate_dispatcher
 {
-	typedef typename boost::mpl::copy<
-		boost::mpl::filter_view<
-			typename boost::mpl::sort<
+	typedef typename boost::mpl::sort<
+		typename boost::mpl::copy<
+			boost::mpl::filter_view<
 				_table,
-				transition_less<boost::mpl::_1, boost::mpl::_2>
-			>::type,
-			boost::is_same<
-				_event,
-				transition_event<boost::mpl::_1>
-			>
-		>,
-		boost::mpl::back_inserter<typename boost::mpl::clear<_table>::type>
+				boost::is_same<
+					_event,
+					transition_event<boost::mpl::_1>
+				>
+			>,
+			boost::mpl::back_inserter<typename boost::mpl::clear<_table>::type>
+		>::type,
+		transition_less<boost::mpl::_1, boost::mpl::_2>
 	>::type seq;
 	typedef typename generate_dispatcher_impl<
 		typename boost::mpl::begin<seq>::type,
